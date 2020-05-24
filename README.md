@@ -22,5 +22,5 @@ A card can be (3)dragged and dropped into a different column, if we want to chan
 - [ ] create the Kanban board with functionality of HRs adding a card and adding comments
 - [ ] add a drag and drop functionality
 - [ ] add a uploading resume functionality
-- [ ] add HR ratings functionality
+- [ ] add HR ratings functionality(keep track of who gives the ratings)
 - [ ] create a docker container
