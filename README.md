@@ -17,10 +17,10 @@ A card can be (3)dragged and dropped into a different column, if we want to chan
 
 
 ## TODO
-- [ ] start with the chat program(create-reate-app) blog, and implement user login, connect to MongoDB.
+- [ ] start with the chat program(create-reate-app) blog,frontend, backend, and implement user login, connect to MongoDB.
 - [ ] think about the overall schemes in the database, I need HR(login, password), I need candidates(name,education,contact,resume,(number of people rated, total rating -> average rating))
 - [ ] create the Kanban board with functionality of HRs adding a card and adding comments
 - [ ] add a drag and drop functionality
 - [ ] add a uploading resume functionality
-- [ ] add HR ratings functionality
+- [ ] add HR ratings functionality(keep track of who gives the ratings)
 - [ ] create a docker container
