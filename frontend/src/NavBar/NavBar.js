@@ -12,10 +12,7 @@ function NavBar(props) {
 
   return (
 
-    <Nav className="navbar bg-primary fixed-top"
-      activeKey="/home"
-      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-    >
+    <Nav className="navbar bg-primary fixed-top" activeKey="/home">
       <Nav.Item>
         <Nav.Link href="/" className="Home"><h4>Kanban Board for hiring</h4></Nav.Link>
       </Nav.Item>

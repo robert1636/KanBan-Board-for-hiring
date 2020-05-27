@@ -5,56 +5,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 
-
-// var categories =
-// {
-//   // set items to candidates later
-//   [1]: { name: 'Applied', items: [{ id: uuid(), name: 'Robert' }] },
-//   [2]: { name: 'Phone Screen', items: [] },
-//   // [uuid()]: { name: 'On Site', items: [] },
-//   // [uuid()]: { name: 'Offered', items: [] },
-//   // [uuid()]: { name: 'Accepted', items: [] },
-//   // [uuid()]: { name: 'Rejected', items: [] },
-// };
-// const setColumns1 = (columns, source, destination)
-// const onDragEnd = (result, columns, setColumns) => {
-//   if (!result.destination) return;
-//   const { source, destination } = result;
-//   console.log(columns[source.droppableId].name);
-//   console.log(columns[destination.droppableId].name);
-//   if (source.droppableId !== destination.droppableId) {
-//     const sourceColumn = columns[source.droppableId];
-//     const destColumn = columns[destination.droppableId];
-//     const sourceItems = [...sourceColumn.items];
-//     const destItems = [...destColumn.items];
-//     const [removed] = sourceItems.splice(source.index, 1);
-//     destItems.splice(destination.index, 0, removed);
-//     this.setState({
-//       ...columns,
-//       [source.droppableId]: {
-//         ...sourceColumn,
-//         items: sourceItems
-//       },
-//       [destination.droppableId]: {
-//         ...destColumn,
-//         items: destItems
-//       }
-//     })
-//   } else {
-//     const column = columns[source.droppableId];
-//     const copiedItems = [...column.items];
-//     const [removed] = copiedItems.splice(source.index, 1);
-//     copiedItems.splice(destination.index, 0, removed);
-//     this.setState({
-//       ...columns,
-//       [source.droppableId]: {
-//         ...column,
-//         items: copiedItems
-//       }
-//     });
-//   }
-// }
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -64,11 +14,11 @@ class Home extends Component {
       categories:
       {
         'Applied': { name: 'Applied', items: [] },
-        ['Phone Screen']: { name: 'Phone Screen', items: [] },
-        [uuid()]: { name: 'On Site', items: [] },
-        [uuid()]: { name: 'Offered', items: [] },
-        [uuid()]: { name: 'Accepted', items: [] },
-        [uuid()]: { name: 'Rejected', items: [] },
+        'Phone Screen': { name: 'Phone Screen', items: [] },
+        'On Site': { name: 'On Site', items: [] },
+        'Offered': { name: 'Offered', items: [] },
+        'Accepted': { name: 'Accepted', items: [] },
+        'Rejected': { name: 'Rejected', items: [] },
       }
     };
   }
@@ -78,12 +28,13 @@ class Home extends Component {
     this.setState({
       candidates,
       categories: {
-        ...this.state.categories, 'Applied': { ...this.state.categories['Applied'], items: candidates }
+        ...this.state.categories, 
+        'Applied': { ...this.state.categories['Applied'], items: candidates }
       }
     });
   }
 
-  onDragEnd(result, columns, setColumns) {
+  onDragEnd(result, columns) {
     if (!result.destination) return;
     const { source, destination } = result;
     console.log(columns[source.droppableId].name);
@@ -132,7 +83,7 @@ class Home extends Component {
   render() {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
-        <DragDropContext onDragEnd={result => this.onDragEnd(result, this.state.categories, () => { })}>
+        <DragDropContext onDragEnd={result => this.onDragEnd(result, this.state.categories)}>
           {Object.entries(this.state.categories).map(([id, column]) => {
             return (
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -150,13 +101,17 @@ class Home extends Component {
                               <Draggable key={item.id} draggableId={item.id} index={index}>
                                 {(provided, snapshot) => {
                                   return (
+                                    <Link to={`/candidate/${item.id}`}>
                                     <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
                                       style={{
                                         userSelect: 'none', padding: 16, margin: '0 0 8px 0', minHeight: '50px', backgroundColor: snapshot.isDragging ? '#517559' : '#69b56a',
                                         color: 'white', ...provided.draggableProps.style
                                       }}>
-                                      {item.name}
+                                      
+                                        {item.name}
+                                      
                                     </div>
+                                    </Link>
                                   )
                                 }}
                               </Draggable>
