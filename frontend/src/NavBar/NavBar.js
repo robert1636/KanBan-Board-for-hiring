@@ -17,25 +17,25 @@ function NavBar(props) {
       onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
     >
       <Nav.Item>
-        <Nav.Link href="/" className="navbar-brand"><h4>Kanban Board for hiring</h4></Nav.Link>
+        <Nav.Link href="/" className="Home"><h4>Kanban Board for hiring</h4></Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Link to="/new-candidate">
-          <Button className="mr-2 text-white" variant="outline-primary">Add</Button>{' '}
+          <Button ><h4>New Candidate</h4></Button>{' '}
         </Link>
       </Nav.Item>
       <Nav.Item>
         {
           !auth0Client.isAuthenticated() &&
-          <button className="btn btn-dark" onClick={auth0Client.signIn}>Sign In</button>
+          <Button onClick={auth0Client.signIn} ><h4>Sign In</h4></Button>
         }
       </Nav.Item>
       <Nav.Item>
         {
           auth0Client.isAuthenticated() &&
           <div>
-            <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
-            <button className="btn btn-dark" onClick={() => { signOut() }}>Sign Out</button>
+            <label className="mr-2 text-white"><h5>{auth0Client.getProfile().name}</h5></label>
+            <Button onClick={() => { signOut() }}><h4>Sign Out</h4></Button>
           </div>
         }
       </Nav.Item>
@@ -43,6 +43,6 @@ function NavBar(props) {
 
     </Nav>
   );
-} 
+}
 
 export default withRouter(NavBar);

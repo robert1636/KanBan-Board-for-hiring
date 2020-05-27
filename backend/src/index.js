@@ -30,7 +30,7 @@ app.use(morgan('combined'));
 app.get('/', (req, res) => {
   console.log(candidates);
   const qs = candidates.map(q => ({
-    id: q.id,
+    id: q.id.toString(),
     name: q.name,
     education: q.education,
     contact: q.contact,
